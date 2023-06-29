@@ -17,3 +17,8 @@ export interface SVGIcon {
     viewBoxHeight: number;
     mainClass?: string;
 }
+
+export interface SearchManufacturerProps {
+    manufacturer: string;
+    handleSetManufacturer: (manufacturer: string)=> void;
+}
