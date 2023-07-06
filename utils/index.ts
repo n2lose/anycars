@@ -1,12 +1,14 @@
-import { CarProps } from "@/types";
+import { CarProps, FilterProps } from "@/types";
 
-export async function fetchCars() {
+export async function fetchCars(filters: FilterProps) {
     const headers = {
 		'X-RapidAPI-Key': process.env.NEXT_PUBLIC_RAPID_API_KEY || ' ',
 		'X-RapidAPI-Host': process.env.NEXT_PUBLIC_RAPID_API_HOST || ''
 	}
-    const url = process.env.NEXT_PUBLIC_RAPID_API_URL || '';
-    console.log('url ==== ', url);
+    console.log('filters ============= ', filters);
+    const {manufacturer, year, model, limit, fuel} = filters;
+    const url = process.env.NEXT_PUBLIC_RAPID_API_URL + `?make=${manufacturer}&year=${year}&model=${model}&limit=${limit}&fuel_type=${fuel}`;
+    console.log('url ===== ', url);
     const response = await fetch(url, {
         headers: headers
     });
