@@ -21,8 +21,8 @@ export interface SVGIcon {
 }
 
 export interface SearchManufacturerProps {
-    manufacturer: string;
-    handleSetManufacturer: (manufacturer: string)=> void;
+    selected: string;
+    setSelected: (manufacturer: string)=> void;
 }
 
 export interface CarProps {
@@ -47,11 +47,11 @@ export interface CarDetailsProps {
 }
 
 export interface FilterProps {
-    manufacturer: string,
-    year: number,
-    fuel: string,
-    limit: number,
-    model: string,
+    manufacturer?: string,
+    year?: string,
+    fuel?: string,
+    limit?: number,
+    model?: string,
 }
 
 export interface HomeProps {
@@ -66,9 +66,11 @@ export interface OptionsProps {
 export interface CustomFilterProps {
     title: string;
     options: OptionsProps[];
+    setFilter: (value: string) => void;
 }
 
 export interface ShowMoreProps {
     pageNumber: number,
     isNext: boolean;
+    setLimit: (pageNumber: number)=> void;
 }

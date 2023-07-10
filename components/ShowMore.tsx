@@ -5,15 +5,15 @@ import { useRouter } from "next/navigation";
 import CustomButton from "./CustomButton";
 import { updateFilterParams } from "@/utils";
 
-const ShowMore = ({ pageNumber, isNext }: ShowMoreProps) => {
+const ShowMore = ({ pageNumber, isNext, setLimit }: ShowMoreProps) => {
   const router = useRouter();
 
-  const handleNavigation = () => {
-    const newLimit = (pageNumber + 1) * 10;
-    const newPathName = updateFilterParams("limit", `${newLimit}`);
+  // const handleNavigation = () => {
+  //   const newLimit = (pageNumber + 1) * 10;
+  //   const newPathName = updateFilterParams("limit", `${newLimit}`);
 
-    router.push(newPathName);
-  }
+  //   router.push(newPathName);
+  // }
 
   return (
     <div className="w-full flex-center gap-5 mt-10">
@@ -22,7 +22,7 @@ const ShowMore = ({ pageNumber, isNext }: ShowMoreProps) => {
                 label="Show More"
                 type="button"
                 mainClass="bg-primary-blue rounded-full text-white px-5 py-2"
-                handleOnClicked={handleNavigation}
+                handleOnClicked={()=> setLimit((pageNumber + 1) * 10)}
             />
         )}
     </div>
